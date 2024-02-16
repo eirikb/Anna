@@ -27,7 +27,7 @@ This is what the beauty looks like:
 with the very elaborate duct taping of my phone one the back. Upside down for easy USB access and better speaker input.
 
 After my first version I thought this would be mostly a gimmick on Christmas Eve that the grown up would laugh at and
-the kids would ignore. Oh was I wrong. The kids loved it. And they still do.
+the kids would ignore. Oh, was I wrong. The kids loved it. And they still do.
 
 ### How it kind of works
 
@@ -58,7 +58,7 @@ It is a bit different now;
 More notes:  
 I also have several other assistants. They use different _instructions_ making them respond differently. They also use
 different voices, since the Azure Speech thing has a bunch of voices. This was mostly for testing, fun and to freak the
-kids.
+kids out.
 
 This is my current instruction for Anna:
 
@@ -84,14 +84,33 @@ Everything you say will be sent to text-to-speech so it must convert to speech w
 5. I tried re-using same thread (conversation) in OpenAI. This resulted in a ton of "tokens". This accumulated to a ton
    of money. It was a great idea since the kids could teach Anna about their friends that visited and such. But it was
    too expensive.
-6. Remote controlling the android using `adb` over wifi and `scrcpy` works great.
+6. Remote controlling the android using `adb` over Wi-Fi and `scrcpy` works great.
+7. Microsoft Speech API is scary good at listening. When testing I had the app running on my phone and I could talk to
+   it while it was in my pockets, in a crowded room.
 
-### What I haven't learned
+### Things I haven't learned
 
-The app seems to stop. At least stop listening for shakes. I'm not sure why. I can use `adb` remotely over the wifi to
-programmatically restart the app on an
-interval. I think I need to move the service to front or something. Android experts please help.  
-The API has also become slower and slower and slower over time. I've downgraded the models from 4-turbo to 4 and 3.5,
-which seem
-to help with speed (and money), but even on 3.5 it has gotten a bit slow to respond. Although I prefer to be on 4 since
-I can.
+1. The app seems to stop. At least stop listening for shakes. I'm not sure why. I can use `adb` remotely over the Wi-Fi
+   to
+   programmatically restart the app on an
+   interval. I think I need to move the service to front or something. Android experts please help.
+2. The API has also become slower and slower and slower over time. I've downgraded the models from 4-turbo to 4 and 3.5,
+   which seem
+   to help with speed (and money), but even on 3.5 it has gotten a bit slow to respond. Although I prefer to be on 4
+   since
+   I can.
+
+### Want to run this?
+
+The selling point of this project is that all the hardware you need is an old Android phone, which a lot of people have
+lying around. It does require a rather new-ish phone though, because the Android SDK must be of a higher number.
+
+You also need to:
+
+1. Create an Azure account - or try to use OpenAI whisper directly.
+2. Create a speech resource in Azure.
+3. Create an OpenAI account - or try to use Azure AI things directly.
+4. Create an assistant in the OpenAI portal with some instructions.
+5. Tweak the YourService.kt files to insert keys and such. What, no environment variables or secret properties files?
+   Sorry. Just don't push public and hope your Copilot does not do it either.
+6. Tweak the YourService.kt files to listen for correct keywords and use correct voices etc.
